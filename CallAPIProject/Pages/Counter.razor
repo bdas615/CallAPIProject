@@ -1,0 +1,25 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<h3>Searching</h3>
+
+<CallAPIProject.Pages.Project.SearchTest
+    OnSearch="OnValueSearch"></CallAPIProject.Pages.Project.SearchTest>
+
+<br/>
+Search Term : @searchTerm
+
+
+
+@code {
+
+    private string searchTerm = string.Empty;
+
+    private void OnValueSearch(string searchTerm)
+    {
+        this.searchTerm = searchTerm;
+    }
+
+
+}

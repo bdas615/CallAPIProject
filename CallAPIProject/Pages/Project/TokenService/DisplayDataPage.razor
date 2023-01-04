@@ -1,0 +1,23 @@
+﻿@page "/Project/TokenService/DisplayData";
+@using Project_Models
+@inject HttpClient Http;
+@inherits DisplayInventoryDataBase
+
+
+<h3>Display Data</h3>
+
+@code {
+
+    public AllDeviceData AllValues { get; set; } = new AllDeviceData(); 
+
+    public async void GetAPIData()
+    {
+        string baseUrl = "https://tools.brandinstitute.com/wsInventory/wsInventory.asmx";
+
+        string endpoint = $"{baseUrl}/Device_GetAll";
+
+        //await Http.GetFromJsonAsync(Http.PostAsync(endpoint), endpoint, AllValues);
+
+        
+    }
+}

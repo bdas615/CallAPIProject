@@ -1,0 +1,88 @@
+﻿@page "/Viewpage/{Id:int}";
+@page "/Viewpage"
+
+@using Project_Models
+
+<p>SDFasduihfisdhfuiohsd</p>
+
+@if (InterfaceVariable == null)
+{
+    <div class="d-flex justify-content-center" style="margin-top:20%;margin-bottom:50%">
+        <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Loading....</span>
+        </div>
+    </div>
+}
+
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Body</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var ww in ww)
+            {
+                <tr>
+
+                    <td>@ww.Id</td>
+                    <td style="width:30%">@ww.Title</td>
+                    <td style="width:40%">@ww.Body</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+}
+
+@code
+{
+    [Parameter]
+    public int Id { get; set; }
+
+    public IJsonPlaceholder PlaceholderService { get; set; }
+
+    public IEnumerable<Interface> InterfaceVariable { get; set; }
+
+    public List<Interface> ww = new List<Interface>();
+
+    public bool IsLoading { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender) 
+        {   
+            if (Id == 0)
+            {
+                //create
+                IsLoading = false;
+            }
+            //else 
+            //{
+            //    //update
+            //    await LoadDetails();
+            //}
+        }
+    }
+
+    //private async Task LoadDetails()
+    //{
+    //    IsLoading = true;
+    //    StateHasChanged();
+    //    foreach(var x in InterfaceVariable)
+    //    {
+    //        foreach(var x in w) 
+    //        {
+                
+    //        }
+    //    }
+    //    IsLoading = false;
+    //    StateHasChanged();
+    //}
+}

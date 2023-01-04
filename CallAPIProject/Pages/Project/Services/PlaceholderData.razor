@@ -1,0 +1,91 @@
+﻿@page "/Pages/Project/Services/placeholderData";
+@using Project_Models
+
+@inherits PlaceholderDataBase
+
+<h3>API JSON Placeholder Data Page</h3>
+
+<input id="inp" @bind="search" placeholder="Search...." class="p-1"  />
+
+<button type="button" class="btn btn-info" @onclick="ButtonClick">Button</button>
+
+@*<button type="button" class="btn btn-info" @onclick="SortingFunction">Sort</button>*@
+
+<select  @onclick="@(()=> SortingFunction())">
+    <option value="new">Newest First</option>
+    <option value="old">Oldest First</option>
+</select>
+
+<div class="col-4 offset-8 justify-content-md-end">
+    <a href="/pages/AddNewData" class="btn btn-info form-control">Add New Data</a>
+</div>
+
+@*@for (int i = 0; i < 100; i++)
+{
+    <p>@tu[i].Id</p>
+}*@
+
+@if (InterfaceVariable == null)
+{
+    <div class="d-flex justify-content-center" style="margin-top:20%;margin-bottom:50%">
+        <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Loading....</span>
+        </div>
+    </div>
+}
+
+else
+{
+
+   
+   @* foreach (var w in w) 
+    {
+        <p>@w.Id</p>
+        <p>@w.Title</p>
+    }
+*@
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Body</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var w in w)
+            { 
+            <tr>
+
+                <td>@w.Id</td>
+                <td style="width:30%">@w.Title</td>
+                <td style="width:40%">@w.Body</td>
+
+                 <td>
+                        <a href="@($"/Viewpage/{w.Id}")" class="btn btn-primary">View</a>
+                    @*<a href="Viewpage" class="btn btn-primary">View</a>*@
+                    <a href="#" class="btn btn-warning">Edit</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
+                </td>
+
+            </tr>
+               
+            }
+           
+        </tbody>
+    </table>
+       
+    }
+
+@code 
+{
+
+   
+   
+
+}
